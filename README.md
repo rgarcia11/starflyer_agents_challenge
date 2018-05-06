@@ -168,6 +168,6 @@ create_structure('f(c,g(Y,d))') = {
 }
 </pre>
 
-Their structure is clearly different, and so they aren't compatible. This droid would be labeled as a Starflyer agent.
+Their structures are clearly different, and so they aren't compatible. This droid would be labeled as a Starflyer agent.
 
 
