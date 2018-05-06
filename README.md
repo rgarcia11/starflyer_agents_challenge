@@ -102,7 +102,7 @@ f(X,g(c))
 f(f(c),Z)
 </pre>
 
-<pre>
+```Python
 create_structure('f(f(c),Z)') = {
 	'function': {
 		'1': {
@@ -128,7 +128,7 @@ create_structure('f(f(c),Z)') = {
 		}
 	}
 }
-</pre>
+```
 
 Meaning that their structure is the same, so they are compatible hashes. This droid would be labeled as inconclusive.
 
@@ -139,7 +139,7 @@ f(X,g(c))
 f(c,g(Y,d))
 </pre>
 
-<pre>
+```Python
 create_structure('f(f(c),Z)') = {
 	'function': {
 		'1': {
@@ -166,7 +166,7 @@ create_structure('f(c,g(Y,d))') = {
 		}
 	}
 }
-</pre>
+```
 
 Their structures are clearly different, and so they aren't compatible. This droid would be labeled as a Starflyer agent.
 
