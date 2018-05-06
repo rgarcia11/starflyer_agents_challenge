@@ -1,0 +1,58 @@
+Transacciones ACID
+
+Atomicidad (todo o nada)
+O se acaba con commit o se acaba con rollback
+Autocommit -> una sentencia es una transaccion
+
+Como a veces tengo 109273019723 transacciones
+envueltas en una sola transaccion, yo quiero tener savepoints
+Cuando algo se daña, yo solamente deshago hasta el último savepoint
+No tiene sentido volver a hacer todo lo que ya había hecho otra vez
+También tenemos las transacciones distribuidas, cuando mi transacción
+tiene que ver con muchas bases de datos.
+
+¿¿Qué es un cursor?? :(
+
+Si no tengo cuidado puedo tener problemas:
+	Lectura sucia leer diferente información, se jode cuando hace commit
+	Lectura inconsistente, lectura asíncrona, commits sin sentido porque 
+		la información que se esperaba nunca se encontró
+	Phantoms cuando se hace commit pero uno de los dos no se da cuenta
+	Pérdida de datos por actualización Lo que realiza una de las partes con un commiit
+	lo deshace otra de las partes con otro commit
+	
+Para evitar problemas se tienen alternativas de solución:
+Serializar: tenga lo que tenga, el resultado final es como si
+			se hubieran ejecutado esas transacciones una detrás
+			de otra. Hay formas de implementarlo:
+			Control pesimista: cuando hay un usuario, no permite
+			la edición de otros usuarios -- candados
+			Contrrol optimista: permito la edición y dejo que 
+			cualquier edite, "recolecto estampillas"
+			
+Con candados no se puede utilizar un pedacito o toda la base de datos.
+Hay que manejar la granularidad.
+	1 nivel Toda la base de datos
+	2 nivel una tablita
+	3 nivel es a nivel de tupla
+	4 nivel es a nivel de atributo (este no es tan comun)
+usualmente se maneja a nivel de tupla.
+
+Los candados me evitan problemas pero me ocasionan dos problemas:
+	Abrazos mortales y
+Hay candados exclusivos ESTO ES MIO NADIE ME LO MIRA
+Hay candados compartidos -> aumenta la probabilidad de abrazos mortales
+Hay candados de actualizacion
+
+Protocolos
+Two phase locking
+
+Pregunta tipica de parcial
+	Un abrazo mortal se presenta cuando (caso minimo)
+	dos transacciones se estan peleando por los mismos dos recursos
+	Tiempo T1, candado 1 fijo un recurso 1
+	Tiempo T2, candado 2 fijo un recurso 2
+	En el tiempo T3 el candado 1 quiere el recurso 2
+	En el tiempo T4, el candado 2 quiere el recurso 1
+	Pero el candado 1 no puede soltar su recurso hasta que el
+	candado 2 no suelte el suyo, y vice versa, entonces todo muere.
