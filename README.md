@@ -1,6 +1,6 @@
-# Starflyer Agents Challenge
+# Starflyer Agents Challenge Variation
 
-## Description
+## (Original) Starflyers Agents Challenge Description
 This description was copied from https://uva.onlinejudge.org/, problem 12315, The Starflyer Agents.
 
 Famed investigator Paula Myo, working on behalf of the 2011 established Commonwealth government, is determined to stop the Starflyer from spying.
@@ -33,6 +33,10 @@ You have been assigned to Myo’s team: your task is to write an algorithm for d
 
 Can you help Detective Myo to uncover the Starflyer agents?
 
+## Variation Description
+The variation is in the θ function and the hash orders. Here, the order of elements in the hash does not matter, but only constants can be mapped to constants, variables to variables and functions to functions, given their input is the same in terms of variables and constants.
+
+
 ## Input
 The input consists of several test cases. The first line of each test case contains a string name and a natural number n separated by a blank (2 ≤ n ≤ 20, 1 ≤ |name| ≤ 16). Then n lines follow, each containing a hash hi (1 ≤ i ≤ n, 1 ≤ |hi| ≤ 512).
 You can suppose that:
@@ -49,7 +53,7 @@ The last test case is followed by a line with the text “END 0”.
         f(c,g(Y,d))
         c3po 2
         f(X,g(c))
-        f(f(Y),Z)
+        f(f(c),Z)
         PC2 2
         f(f(Y),Z)
         f(c,g(Y,d))
