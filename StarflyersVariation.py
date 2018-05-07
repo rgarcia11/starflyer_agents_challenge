@@ -25,7 +25,7 @@ You have been assigned to Myo’s team: your task is to write an algorithm for d
 Can you help Detective Myo to uncover the Starflyer agents?
 """
 import sys
-from DroidAnalyzer import *
+from DroidAnalyzerVariation import *
 
 def reading(suspects):
     """
