@@ -17,8 +17,13 @@ for each droid, the tags of any software updates must be compatible.
 Two hashes h1 and h2 are compatible if there is a mapping θ from variables to hashes such that h1θ = h2θ, where h1θ (resp., h2θ) denotes the simultaneous replacement of any occurrence of each variable x in h1 (resp., h2) with the hash θ(x).
 A sequence of hashes h1, . . . , hn is compatible if there is θ such that h1θ, . . . , hnθ are all equal.
 For example, assume that X, Y, Z are variables, c, d are constants, and f, g are function symbols, and consider the hashes h1, h2, and h3 as follows:
-h1 : f(X, g(c)) h2 : f(f(Y ), Z) h3 : f(c, g(Y, d))
-Observe that h1 and h2 are compatible because the mapping θ = {X 7→ f(Y ), Z 7→ g(c)} satisfies h1θ = h2θ.
+
+  * h1 : f(X, g(c)) h2 : f(f(Y ), Z) h3 : f(c, g(Y, d))
+  
+Observe that h1 and h2 are compatible because the mapping 
+
+  * θ = {X → f(Y), Z → g(c)} satisfies h1θ = h2θ.
+  
 However, any other pair from h1, h2, and h3 is not compatible.
 Therefore, any sequence of hashes containing h1, h2, and h3 is not compatible because there is no mapping θ such that h1θ = h2θ = h3θ.
 Detective Myo has just been briefed on the aforementioned security policy.
